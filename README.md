@@ -43,6 +43,10 @@ python thprobing.py RESULT_OF_GAUSSIAN_MATCHED_FILTER
 Note: to implement this algorithm, you need to obtain the Gaussian matched filter result from first algorithm (the second output from mfr.py).
 
 ### Results (Image from [DRIVE](https://www.isi.uu.nl/Research/Databases/DRIVE/) database)
+Ground truth image. 
+
+![ ](images/gt.png)
+
 Generate vessels from probes (the blue dots).  
 
 ![ ](images/probes.gif)
