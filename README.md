@@ -17,13 +17,16 @@ python ga.py RETINAL_IMAGE GROUND_TRUTH_IMAGE
 ```
 
 ### Results
-Original image:
+Original image.  
+
 ![ ](images/21_training.png). 
 
-Result of Gaussian Matched Filter
+Result of Gaussian Matched Filter. 
+
 ![ ](images/DOG_21_training.png). 
 
-Result of First Order Derivative of Gaussian
+Result of First Order Derivative of Gaussian. 
+
 ![ ](images/FDOG_21_training.png). 
 
 ## Approach: Piecewise Threshold Probing of the Matched Filter Response
@@ -36,7 +39,8 @@ python thprobing.py RESULT_OF_GAUSSIAN_MATCHED_FILTER
 Note: to implement this algorithm, you need to obtain the Gaussian matched filter reuslt from first algorithm (the second output from mfr.py).
 
 ### Results
-Generate vessels from each probes (the blue dots).
+Generate vessels from each probes (the blue dots).  
+
 ![ ](images/probes.gif)
 
 ## Dataset
