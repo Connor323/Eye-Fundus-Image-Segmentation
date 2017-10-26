@@ -16,7 +16,7 @@ Optional: To obtain a better set of hyper-parameters, I also provide the code of
 python ga.py RETINAL_IMAGE GROUND_TRUTH_IMAGE
 ```
 
-### Results
+### Results (Image from [DRIVE](https://www.isi.uu.nl/Research/Databases/DRIVE/) database)
 Original image.  
 
 ![ ](images/21_training.png). 
@@ -42,7 +42,7 @@ python thprobing.py RESULT_OF_GAUSSIAN_MATCHED_FILTER
 ```
 Note: to implement this algorithm, you need to obtain the Gaussian matched filter result from first algorithm (the second output from mfr.py).
 
-### Results
+### Results (Image from [DRIVE](https://www.isi.uu.nl/Research/Databases/DRIVE/) database)
 Generate vessels from each probes (the blue dots).  
 
 ![ ](images/probes.gif)
