@@ -12,7 +12,7 @@ python mfr.py RETINAL_IMAGE MASK_IMAGE
 Note: the mask image represents the outside area. 
 
 Optional: To obtain a better set of hyper-parameters, I also provide the code of genetic algorithm for parameter optimization. 
-```
+```Python
 python ga.py RETINAL_IMAGE GROUND_TRUTH_IMAGE
 ```
 
