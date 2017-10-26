@@ -202,9 +202,7 @@ mask = cv2.imread(sys.argv[2])
 b,g,r = cv2.split(im0) 
 im1 = g
 h, w = im1.shape[:2]
-for y in range(h):
-    for x in range(w):
-        im1[y][x] = 255 - im1[y][x]
+im1 = 255 - im1
 mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
 
 # initialize a variable of the class of MFR. 
@@ -223,34 +221,26 @@ H = matched.applyFilters(im1, bank_gf)
 D = matched.applyFilters(im1, bank_fdog)
 
 # compute the threshold value using MFR-FDoG
-kernel = np.ones((matched.w,matched.w),np.float32)/(matched.w*matched.w)
+kernel_size = 31
+kernel = np.ones((kernel_size,kernel_size),np.float32)/(kernel_size*kernel_size)
 dm = np.zeros(D.shape,np.float32)
 DD = np.array(D, dtype='f')
 dm = cv2.filter2D(DD,-1,kernel)
-dmn = cv2.normalize(dm, dm, 0, 1, cv2.NORM_MINMAX)
+dmn = cv2.normalize(dm, 0, 1, cv2.NORM_MINMAX)
 uH = cv2.mean(H)
 Tc = matched.c * uH[0]
 T = (1+dmn) * Tc 
 
 # threshold the MFR-G with previous threhshold value.
-(h, w) = H.shape
 out = np.zeros(H.shape)
-for y in range(h):
-    for x in range(w):
-        if H[y][x] >= T[y][x]:
-            out[y][x] = 255
-        else:
-            out[y][x] = 0
+out[H > T] = 255
 
 # using the mask image to truncate the value outside the reina. 
-laplacian = cv2.Laplacian(mask,cv2.CV_64F)
-kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,5))
+laplacian = cv2.Laplacian(mask, cv2.CV_64F)
+kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(7,7))
 laplacian = cv2.dilate(laplacian,kernel,iterations = 4)
-for y in range(h):
-    for x in range(w):
-        if not mask[y][x] or laplacian[y][x]:
-            H[y][x] = 0
-            out[y][x] = 0
+H[(mask == 0) + (laplacian != 0)] = 0
+out[(mask == 0) + (laplacian != 0)] = 0
 
 # get rid of the segment less than 10 pixel 
 lab = 1
@@ -271,6 +261,5 @@ for y in range(h):
             out[y][x] = 0
 
 # generate the output images. 
-cv2.imwrite("out"+sys.argv[1], out)
-cv2.imwrite("H"+sys.argv[1], H)
-
+cv2.imwrite("Final_" + sys.argv[1], out)
+cv2.imwrite("MF_" + sys.argv[1], H)
