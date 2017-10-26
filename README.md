@@ -29,6 +29,10 @@ Result of First Order Derivative of Gaussian.
 
 ![ ](images/FDOG21_training.png). 
 
+Final segmentation.  
+
+![ ](images/Final_21_training.png).  
+
 ## Approach: Piecewise Threshold Probing of the Matched Filter Response
 This approach is based on [Hoover](http://www.uhu.es/retinopathy/General/000301IEEETransMedImag.pdf)'s work. 
 
