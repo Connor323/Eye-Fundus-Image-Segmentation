@@ -40,7 +40,7 @@ This approach is based on [Hoover](http://www.uhu.es/retinopathy/General/000301I
 ```Python
 python thprobing.py RESULT_OF_GAUSSIAN_MATCHED_FILTER
 ```
-Note: to implement this algorithm, you need to obtain the Gaussian matched filter reuslt from first algorithm (the second output from mfr.py).
+Note: to implement this algorithm, you need to obtain the Gaussian matched filter result from first algorithm (the second output from mfr.py).
 
 ### Results
 Generate vessels from each probes (the blue dots).  
