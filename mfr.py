@@ -254,10 +254,10 @@ for y in range(h):
 num = np.zeros(lab)
 for y in range(h):
     for x in range(w):
-        num[label[y][x]-1] += 1
+        num[int(label[y][x]-1)] += 1
 for y in range(h):
     for x in range(w):
-        if num[label[y][x]-1] <= 10:
+        if num[int(label[y][x]-1)] <= 10:
             out[y][x] = 0
 
 # generate the output images. 
